@@ -1,14 +1,56 @@
+const request = require('request')
+
 /**
  * SwaggerWalk utility
  */
 class SwaggerWalk {
   constructor () {
+    /**
+     * stoe the swagger specification data
+     * @type {object}
+     */
     this.spec = {}
+    /**
+     * store the swagger source. can be an url or filepath
+     * @type {string}
+     */
+    this.specSource = ''
   }
 
+  /**
+   * set an object as swagger specification
+   * @param {object} spec - the swagger specification as an object
+   * @returns {this}
+   */
   setSpec (spec) {
     this.spec = spec
     return this
+  }
+
+  /**
+   * load a swagger specification from an url or a filepath
+   * @param {string} source - url of filepath to the swagger specification
+   * @param {function} cb - the callback
+   */
+  loadSpec (source, cb) {
+    let self = this
+    request(source, function (err, res, body) {
+      if (err) {
+        cb(err)
+      }
+      // console.log('statusCode:', res && res.statusCode);
+      if (res && res.statusCode !== 200) {
+        cb(new Error('response failed'))
+      }
+      try {
+        self.spec = JSON.parse(res.body)
+      } catch (e) {
+        cb(e)
+      }
+
+      self.specSource = source
+      cb(null)
+    })
   }
 
   // Tags

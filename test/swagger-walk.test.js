@@ -1,8 +1,39 @@
 const expect = require('expect')
-const SwaggerWalk = require('./swagger-walk')
+const SwaggerWalk = require('../src/swagger-walk')
 const spec = require('./fixtures/swagger.json')
 
 describe('SwaggerWalk', () => {
+  describe('loadSpec', () => {
+    it('load a swagger specification from a http-server', done => {
+      let walker = new SwaggerWalk()
+      let source = 'http://petstore.swagger.io/v2/swagger.json'
+      walker.loadSpec(source, (err) => {
+        expect(err).toBe(null)
+        expect(walker.specSource).toBe(source)
+        expect(walker.spec.swagger).toBe('2.0')
+        done()
+      })
+    })
+    it.skip('load a swagger specification from a local file', done => {
+      let walker = new SwaggerWalk()
+      let source = './fixtures/swagger.json'
+      walker.loadSpec(source, (err) => {
+        expect(err).toBe(null)
+        expect(walker.specSource).toBe(source)
+        expect(walker.spec.swagger).toBe('2.0')
+        done()
+      })
+    })
+  })
+
+  describe('setSpec', () => {
+    it('set a swagger object to the walker', () => {
+      let walker = new SwaggerWalk()
+      walker.setSpec(spec)
+      expect(walker.spec.swagger).toBe('2.0')
+    })
+  })
+
   let walker = new SwaggerWalk()
   walker.setSpec(spec)
 
