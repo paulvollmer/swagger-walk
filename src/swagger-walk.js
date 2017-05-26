@@ -1,24 +1,28 @@
 const request = require('request')
+const Definition = require('./definition')
+const Method = require('./method')
+const Path = require('./path')
+const Tag = require('./tag')
 
 /**
- * SwaggerWalk utility
+ * SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.
  */
 class SwaggerWalk {
   constructor () {
     /**
-     * stoe the swagger specification data
+     * Store the swagger specification data
      * @type {object}
      */
     this.spec = {}
     /**
-     * store the swagger source. can be an url or filepath
+     * Store the swagger source. can be an url or filepath
      * @type {string}
      */
     this.specSource = ''
   }
 
   /**
-   * set an object as swagger specification
+   * Set an object as the swagger specification we want to walk.
    * @param {object} spec - the swagger specification as an object
    * @returns {this}
    */
@@ -28,9 +32,10 @@ class SwaggerWalk {
   }
 
   /**
-   * load a swagger specification from an url or a filepath
-   * @param {string} source - url of filepath to the swagger specification
-   * @param {function} cb - the callback
+   * Load a swagger specification from an URL or a filepath.
+   * TODO: read local fils
+   * @param {string} source - URL or filepath to the swagger specification
+   * @param {function} cb - The callback
    */
   loadSpec (source, cb) {
     let self = this
@@ -58,9 +63,7 @@ class SwaggerWalk {
   walkTags (fn) {
     if (this.spec.tags !== undefined) {
       for (var i = 0; i < this.spec.tags.length; i++) {
-        let tagData = new SwaggerTag(this.spec.tags[i])
-        // tagData.name = this.spec.tags[i].name
-        // tagData.description = this.spec.tags[i].description
+        let tagData = new Tag(this.spec.tags[i])
         fn(i, tagData)
       }
     } else {
@@ -83,7 +86,8 @@ class SwaggerWalk {
       let index = 0
       for (var path in this.spec.paths) {
         if (this.spec.paths.hasOwnProperty(path)) {
-          fn(index, path, this.spec.paths[path])
+          let pathData = new Path(this.spec.paths[path])
+          fn(index, path, pathData)
         }
         index++
       }
@@ -104,7 +108,7 @@ class SwaggerWalk {
         if (this.spec.paths.hasOwnProperty(path)) {
           for (var method in this.spec.paths[path]) {
             if (this.spec.paths[path].hasOwnProperty(method)) {
-              let methodData = new SwaggerMethod(this.spec.paths[path][method])
+              let methodData = new Method(this.spec.paths[path][method])
               fn(index, path, method, methodData)
             }
           }
@@ -128,56 +132,14 @@ class SwaggerWalk {
       let index = 0
       for (var def in this.spec.definitions) {
         if (this.spec.definitions.hasOwnProperty(def)) {
-          fn(index, def, this.spec.definitions[def])
+          let defData = new Definition(this.spec.definitions[def])
+          fn(index, def, defData)
         }
       }
     } else {
       fn(0, undefined, undefined)
     }
     return this
-  }
-}
-
-class SwaggerTag {
-  constructor (data) {
-    this.data = data
-  }
-
-  hasName () {
-    if (this.data.name === undefined) {
-      return false
-    }
-    return true
-  }
-
-  hasDescription () {
-    return true
-  }
-}
-
-class SwaggerMethod {
-  constructor (data) {
-    this.data = data
-  }
-
-  hasDescription () {
-    if (this.data.description === undefined) {
-      return false
-    }
-    return true
-  }
-  hasSummary () {
-    if (this.data.summary === undefined) {
-      return false
-    }
-    return true
-  }
-
-  hasTags () {
-    if (this.data.tags === undefined) {
-      return false
-    }
-    return true
   }
 }
 

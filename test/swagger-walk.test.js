@@ -48,7 +48,6 @@ describe('SwaggerWalk', () => {
       walker.walkTags((index, tag) => {
         expect(index).toBeA('number')
         expect(tag).toBeAn('object')
-
         expect(tag.hasName()).toBe(true)
         expect(tag.hasDescription()).toBe(true)
       })
@@ -68,7 +67,6 @@ describe('SwaggerWalk', () => {
         expect(index).toBeA('number')
         expect(path).toBeA('string')
         expect(methods).toBeAn('object')
-
         // expect(methods.total()).toBeA('number')
       })
     })
@@ -90,7 +88,7 @@ describe('SwaggerWalk', () => {
     })
   })
 
-  describe('Definitions', () => {
+  describe.only('Definitions', () => {
     it('totalDefinitions', () => {
       let totalDefinitions = walker.totalDefinitions()
       expect(totalDefinitions).toBeA('number')
@@ -103,6 +101,14 @@ describe('SwaggerWalk', () => {
         expect(index).toBeA('number')
         expect(definition).toBeA('string')
         expect(data).toBeAn('object')
+
+        expect(data.isType('object')).toBeA('boolean')
+        expect(data.isType('object')).toBe(true)
+
+        expect(data.totalProperties()).toNotBe(0)
+        data.walkProperties((index, name, data) => {
+          // console.log(index, name)
+        })
       })
     })
   })
