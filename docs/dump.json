@@ -1,0 +1,1759 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/definition.js",
+    "content": "/**\n * Swagger definition utility to walk through the properties\n */\nclass Definition {\n  constructor (data) {\n    this.data = data\n  }\n\n  /**\n   * Check if the definition is the given type\n   * @param {string} type - the type of the definition (number, string, object etc.)\n   * @returns {boolean}\n   */\n  isType (type) {\n    if (this.data.type === type) {\n      return true\n    }\n    return false\n  }\n\n  /**\n   * return the number of properties\n   */\n  totalProperties () {\n    return Object.keys(this.data.properties).length\n  }\n\n  /**\n   * walk through each property\n   */\n  walkProperties (fn) {\n    if (this.data.properties !== undefined) {\n      let index = 0\n      for (var prop in this.data.properties) {\n        if (this.data.properties.hasOwnProperty(prop)) {\n          fn(index, prop, this.data.properties[prop])\n        }\n        index++\n      }\n    }\n  }\n}\n\nmodule.exports = Definition\n",
+    "static": true,
+    "longname": "src/definition.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "name": "Definition",
+    "memberof": "src/definition.js",
+    "static": true,
+    "longname": "src/definition.js~Definition",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk/src/definition.js",
+    "importStyle": null,
+    "description": "Swagger definition utility to walk through the properties",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/definition.js~Definition",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/definition.js~Definition#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 3,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/definition.js~Definition",
+    "static": false,
+    "longname": "src/definition.js~Definition#data",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "method",
+    "name": "isType",
+    "memberof": "src/definition.js~Definition",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/definition.js~Definition#isType",
+    "access": null,
+    "description": "Check if the definition is the given type",
+    "lineNumber": 14,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": "the type of the definition (number, string, object etc.)"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "method",
+    "name": "totalProperties",
+    "memberof": "src/definition.js~Definition",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/definition.js~Definition#totalProperties",
+    "access": null,
+    "description": "return the number of properties",
+    "lineNumber": 24,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "name": "walkProperties",
+    "memberof": "src/definition.js~Definition",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/definition.js~Definition#walkProperties",
+    "access": null,
+    "description": "walk through each property",
+    "lineNumber": 31,
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 7,
+    "kind": "file",
+    "name": "src/method.js",
+    "content": "/**\n * Swagger method utility\n */\nclass Method {\n  constructor (data) {\n    this.data = data\n  }\n\n  /**\n   *\n   */\n  hasDescription () {\n    if (this.data.description === undefined) {\n      return false\n    }\n    return true\n  }\n\n  /**\n   *\n   */\n  hasSummary () {\n    if (this.data.summary === undefined) {\n      return false\n    }\n    return true\n  }\n\n  /**\n   *\n   */\n  hasTags () {\n    if (this.data.tags === undefined) {\n      return false\n    }\n    return true\n  }\n\n  /**\n   *\n   */\n  walkParameters() {\n\n  }\n\n  /**\n   *\n   */\n  walkResponses() {\n\n  }\n\n}\n\nmodule.exports = Method\n",
+    "static": true,
+    "longname": "src/method.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 8,
+    "kind": "class",
+    "name": "Method",
+    "memberof": "src/method.js",
+    "static": true,
+    "longname": "src/method.js~Method",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk/src/method.js",
+    "importStyle": null,
+    "description": "Swagger method utility",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 9,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 10,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/method.js~Method",
+    "static": false,
+    "longname": "src/method.js~Method#data",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "name": "hasDescription",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#hasDescription",
+    "access": null,
+    "description": "",
+    "lineNumber": 12,
+    "params": [],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "name": "hasSummary",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#hasSummary",
+    "access": null,
+    "description": "",
+    "lineNumber": 22,
+    "params": [],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "method",
+    "name": "hasTags",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#hasTags",
+    "access": null,
+    "description": "",
+    "lineNumber": 32,
+    "params": [],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "name": "walkParameters",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#walkParameters",
+    "access": null,
+    "description": "",
+    "lineNumber": 42,
+    "params": []
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "name": "walkResponses",
+    "memberof": "src/method.js~Method",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/method.js~Method#walkResponses",
+    "access": null,
+    "description": "",
+    "lineNumber": 49,
+    "params": []
+  },
+  {
+    "__docId__": 16,
+    "kind": "file",
+    "name": "src/path.js",
+    "content": "/**\n * Swagger path utility\n */\nclass Path {\n  constructor (data) {\n    this.data = data\n  }\n\n  hasPath(name) {\n\n  }\n\n  walkMethods() {\n\n  }\n}\n\nmodule.exports = Path\n",
+    "static": true,
+    "longname": "src/path.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 17,
+    "kind": "class",
+    "name": "Path",
+    "memberof": "src/path.js",
+    "static": true,
+    "longname": "src/path.js~Path",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk/src/path.js",
+    "importStyle": null,
+    "description": "Swagger path utility",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 18,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/path.js~Path#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 19,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/path.js~Path",
+    "static": false,
+    "longname": "src/path.js~Path#data",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "name": "hasPath",
+    "memberof": "src/path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/path.js~Path#hasPath",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "name",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "name": "walkMethods",
+    "memberof": "src/path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/path.js~Path#walkMethods",
+    "access": null,
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 22,
+    "kind": "file",
+    "name": "src/swagger-walk.js",
+    "content": "const request = require('request')\nconst Definition = require('./definition')\nconst Method = require('./method')\nconst Path = require('./path')\nconst Tag = require('./tag')\n\n/**\n * SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.\n */\nclass SwaggerWalk {\n  constructor () {\n    /**\n     * Store the swagger specification data\n     * @type {object}\n     */\n    this.spec = {}\n    /**\n     * Store the swagger source. can be an url or filepath\n     * @type {string}\n     */\n    this.specSource = ''\n  }\n\n  /**\n   * Set an object as the swagger specification we want to walk.\n   * @param {object} spec - the swagger specification as an object\n   * @returns {this}\n   */\n  setSpec (spec) {\n    this.spec = spec\n    return this\n  }\n\n  /**\n   * Load a swagger specification from an URL or a filepath.\n   * TODO: read local fils\n   * @param {string} source - URL or filepath to the swagger specification\n   * @param {function} cb - The callback\n   */\n  loadSpec (source, cb) {\n    let self = this\n    request(source, function (err, res, body) {\n      if (err) {\n        cb(err)\n      }\n      // console.log('statusCode:', res && res.statusCode);\n      if (res && res.statusCode !== 200) {\n        cb(new Error('response failed'))\n      }\n      try {\n        self.spec = JSON.parse(res.body)\n      } catch (e) {\n        cb(e)\n      }\n\n      self.specSource = source\n      cb(null)\n    })\n  }\n\n  // Tags\n\n  walkTags (fn) {\n    if (this.spec.tags !== undefined) {\n      for (var i = 0; i < this.spec.tags.length; i++) {\n        let tagData = new Tag(this.spec.tags[i])\n        fn(i, tagData)\n      }\n    } else {\n      fn(0, undefined)\n    }\n    return this\n  }\n\n  totalTags () {\n    if (this.spec.tags !== undefined) {\n      return this.spec.tags.length\n    }\n    return 0\n  }\n\n  // Paths\n\n  walkPaths (fn) {\n    if (this.spec.paths !== undefined) {\n      let index = 0\n      for (var path in this.spec.paths) {\n        if (this.spec.paths.hasOwnProperty(path)) {\n          let pathData = new Path(this.spec.paths[path])\n          fn(index, path, pathData)\n        }\n        index++\n      }\n    } else {\n      fn(0, undefined, undefined)\n    }\n    return this\n  }\n\n  totalPaths () {\n    return Object.keys(this.spec.paths).length\n  }\n\n  walkPathMethods (fn) {\n    if (this.spec.paths !== undefined) {\n      let index = 0\n      for (var path in this.spec.paths) {\n        if (this.spec.paths.hasOwnProperty(path)) {\n          for (var method in this.spec.paths[path]) {\n            if (this.spec.paths[path].hasOwnProperty(method)) {\n              let methodData = new Method(this.spec.paths[path][method])\n              fn(index, path, method, methodData)\n            }\n          }\n        }\n        index++\n      }\n    } else {\n      fn(0, undefined, undefined)\n    }\n    return this\n  }\n\n  // Definitions\n\n  totalDefinitions () {\n    return Object.keys(this.spec.definitions).length\n  }\n\n  walkDefinitions (fn) {\n    if (this.spec.definitions) {\n      let index = 0\n      for (var def in this.spec.definitions) {\n        if (this.spec.definitions.hasOwnProperty(def)) {\n          let defData = new Definition(this.spec.definitions[def])\n          fn(index, def, defData)\n        }\n      }\n    } else {\n      fn(0, undefined, undefined)\n    }\n    return this\n  }\n}\n\nmodule.exports = SwaggerWalk\n",
+    "static": true,
+    "longname": "src/swagger-walk.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 23,
+    "kind": "variable",
+    "name": "request",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~request",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 24,
+    "kind": "variable",
+    "name": "Definition",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~Definition",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "variable",
+    "name": "Method",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~Method",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 26,
+    "kind": "variable",
+    "name": "Path",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~Path",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "variable",
+    "name": "Tag",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~Tag",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "class",
+    "name": "SwaggerWalk",
+    "memberof": "src/swagger-walk.js",
+    "static": true,
+    "longname": "src/swagger-walk.js~SwaggerWalk",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk",
+    "importStyle": null,
+    "description": "SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.",
+    "lineNumber": 10,
+    "interface": false
+  },
+  {
+    "__docId__": 29,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": []
+  },
+  {
+    "__docId__": 30,
+    "kind": "member",
+    "name": "spec",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#spec",
+    "access": null,
+    "description": "Store the swagger specification data",
+    "lineNumber": 16,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 31,
+    "kind": "member",
+    "name": "specSource",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#specSource",
+    "access": null,
+    "description": "Store the swagger source. can be an url or filepath",
+    "lineNumber": 21,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 32,
+    "kind": "method",
+    "name": "setSpec",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#setSpec",
+    "access": null,
+    "description": "Set an object as the swagger specification we want to walk.",
+    "lineNumber": 29,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{this}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "spec",
+        "description": "the swagger specification as an object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "this"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "member",
+    "name": "spec",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#spec",
+    "access": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "name": "loadSpec",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#loadSpec",
+    "access": null,
+    "description": "Load a swagger specification from an URL or a filepath.\nTODO: read local fils",
+    "lineNumber": 40,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "source",
+        "description": "URL or filepath to the swagger specification"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "cb",
+        "description": "The callback"
+      }
+    ]
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "name": "walkTags",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#walkTags",
+    "access": null,
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "name": "totalTags",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#totalTags",
+    "access": null,
+    "description": null,
+    "lineNumber": 75,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "name": "walkPaths",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#walkPaths",
+    "access": null,
+    "description": null,
+    "lineNumber": 84,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 38,
+    "kind": "method",
+    "name": "totalPaths",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#totalPaths",
+    "access": null,
+    "description": null,
+    "lineNumber": 100,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "method",
+    "name": "walkPathMethods",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#walkPathMethods",
+    "access": null,
+    "description": null,
+    "lineNumber": 104,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 40,
+    "kind": "method",
+    "name": "totalDefinitions",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#totalDefinitions",
+    "access": null,
+    "description": null,
+    "lineNumber": 126,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "name": "walkDefinitions",
+    "memberof": "src/swagger-walk.js~SwaggerWalk",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/swagger-walk.js~SwaggerWalk#walkDefinitions",
+    "access": null,
+    "description": null,
+    "lineNumber": 130,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "file",
+    "name": "src/tag.js",
+    "content": "/**\n * Swagger tag utility\n */\nclass Tag {\n  constructor (data) {\n    /**\n     * Store the tag data\n     * @type {object}\n     */\n    this.data = data\n  }\n\n  /**\n   * Check if the tag has a name property.\n   * @returns {boolean}\n   */\n  hasName () {\n    if (this.data.name === undefined) {\n      return false\n    }\n    return true\n  }\n\n  /**\n   * Check if the tag has a description property.\n   * @returns {boolean}\n   */\n  hasDescription () {\n    if (this.data.description === undefined) {\n      return false\n    }\n    return true\n  }\n}\n\nmodule.exports = Tag\n",
+    "static": true,
+    "longname": "src/tag.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 43,
+    "kind": "class",
+    "name": "Tag",
+    "memberof": "src/tag.js",
+    "static": true,
+    "longname": "src/tag.js~Tag",
+    "access": null,
+    "export": false,
+    "importPath": "swagger-walk/src/tag.js",
+    "importStyle": null,
+    "description": "Swagger tag utility",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 44,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/tag.js~Tag",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/tag.js~Tag#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "__docId__": 45,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/tag.js~Tag",
+    "static": false,
+    "longname": "src/tag.js~Tag#data",
+    "access": null,
+    "description": "Store the tag data",
+    "lineNumber": 10,
+    "type": {
+      "nullable": null,
+      "types": [
+        "object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "name": "hasName",
+    "memberof": "src/tag.js~Tag",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/tag.js~Tag#hasName",
+    "access": null,
+    "description": "Check if the tag has a name property.",
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "name": "hasDescription",
+    "memberof": "src/tag.js~Tag",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/tag.js~Tag#hasDescription",
+    "access": null,
+    "description": "Check if the tag has a description property.",
+    "lineNumber": 28,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 104,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]

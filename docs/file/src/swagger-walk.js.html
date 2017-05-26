@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/swagger-walk.js | swagger-walk API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/paulvollmer/swagger-walk" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/swagger-walk.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const request = require(&apos;request&apos;)
+const Definition = require(&apos;./definition&apos;)
+const Method = require(&apos;./method&apos;)
+const Path = require(&apos;./path&apos;)
+const Tag = require(&apos;./tag&apos;)
+
+/**
+ * SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.
+ */
+class SwaggerWalk {
+  constructor () {
+    /**
+     * Store the swagger specification data
+     * @type {object}
+     */
+    this.spec = {}
+    /**
+     * Store the swagger source. can be an url or filepath
+     * @type {string}
+     */
+    this.specSource = &apos;&apos;
+  }
+
+  /**
+   * Set an object as the swagger specification we want to walk.
+   * @param {object} spec - the swagger specification as an object
+   * @returns {this}
+   */
+  setSpec (spec) {
+    this.spec = spec
+    return this
+  }
+
+  /**
+   * Load a swagger specification from an URL or a filepath.
+   * TODO: read local fils
+   * @param {string} source - URL or filepath to the swagger specification
+   * @param {function} cb - The callback
+   */
+  loadSpec (source, cb) {
+    let self = this
+    request(source, function (err, res, body) {
+      if (err) {
+        cb(err)
+      }
+      // console.log(&apos;statusCode:&apos;, res &amp;&amp; res.statusCode);
+      if (res &amp;&amp; res.statusCode !== 200) {
+        cb(new Error(&apos;response failed&apos;))
+      }
+      try {
+        self.spec = JSON.parse(res.body)
+      } catch (e) {
+        cb(e)
+      }
+
+      self.specSource = source
+      cb(null)
+    })
+  }
+
+  // Tags
+
+  walkTags (fn) {
+    if (this.spec.tags !== undefined) {
+      for (var i = 0; i &lt; this.spec.tags.length; i++) {
+        let tagData = new Tag(this.spec.tags[i])
+        fn(i, tagData)
+      }
+    } else {
+      fn(0, undefined)
+    }
+    return this
+  }
+
+  totalTags () {
+    if (this.spec.tags !== undefined) {
+      return this.spec.tags.length
+    }
+    return 0
+  }
+
+  // Paths
+
+  walkPaths (fn) {
+    if (this.spec.paths !== undefined) {
+      let index = 0
+      for (var path in this.spec.paths) {
+        if (this.spec.paths.hasOwnProperty(path)) {
+          let pathData = new Path(this.spec.paths[path])
+          fn(index, path, pathData)
+        }
+        index++
+      }
+    } else {
+      fn(0, undefined, undefined)
+    }
+    return this
+  }
+
+  totalPaths () {
+    return Object.keys(this.spec.paths).length
+  }
+
+  walkPathMethods (fn) {
+    if (this.spec.paths !== undefined) {
+      let index = 0
+      for (var path in this.spec.paths) {
+        if (this.spec.paths.hasOwnProperty(path)) {
+          for (var method in this.spec.paths[path]) {
+            if (this.spec.paths[path].hasOwnProperty(method)) {
+              let methodData = new Method(this.spec.paths[path][method])
+              fn(index, path, method, methodData)
+            }
+          }
+        }
+        index++
+      }
+    } else {
+      fn(0, undefined, undefined)
+    }
+    return this
+  }
+
+  // Definitions
+
+  totalDefinitions () {
+    return Object.keys(this.spec.definitions).length
+  }
+
+  walkDefinitions (fn) {
+    if (this.spec.definitions) {
+      let index = 0
+      for (var def in this.spec.definitions) {
+        if (this.spec.definitions.hasOwnProperty(def)) {
+          let defData = new Definition(this.spec.definitions[def])
+          fn(index, def, defData)
+        }
+      }
+    } else {
+      fn(0, undefined, undefined)
+    }
+    return this
+  }
+}
+
+module.exports = SwaggerWalk
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

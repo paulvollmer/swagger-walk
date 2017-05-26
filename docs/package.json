@@ -1,0 +1,46 @@
+{
+  "name": "swagger-walk",
+  "version": "0.0.1",
+  "description": "swagger utility to walk through paths, methods and definitions",
+  "author": {
+    "name": "Paul Vollmer",
+    "url": "https://github.com/paulvollmer"
+  },
+  "keywords": [
+    "swagger",
+    "utility",
+    "walker"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/paulvollmer/swagger-walk#readme",
+  "bugs": {
+    "url": "https://github.com/paulvollmer/swagger-walk/issues"
+  },
+  "main": "src/swagger-walk.js",
+  "scripts": {
+    "pretest": "node_modules/.bin/standard --fix",
+    "test": "node_modules/.bin/_mocha test/*.test.js",
+    "docs": "./node_modules/.bin/esdoc",
+    "clean": "rm -rf docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulvollmer/swagger-walk.git"
+  },
+  "standard": {
+    "env": [
+      "node",
+      "es6",
+      "mocha"
+    ]
+  },
+  "devDependencies": {
+    "esdoc": "^0.5.2",
+    "expect": "^1.20.2",
+    "mocha": "^3.4.1",
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
