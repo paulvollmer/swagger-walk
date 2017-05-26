@@ -32,6 +32,9 @@
       "node",
       "es6",
       "mocha"
+    ],
+    "ignore": [
+      "/docs"
     ]
   },
   "devDependencies": {
