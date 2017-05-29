@@ -35,7 +35,7 @@ class Tags {
         callback(i, tagData)
       }
     } else {
-      callback(0, undefined)
+      callback()
     }
     return this
   }

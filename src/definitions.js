@@ -31,7 +31,7 @@ class Definitions {
         }
       }
     } else {
-      callback(0, undefined, undefined)
+      callback()
     }
     return this
   }

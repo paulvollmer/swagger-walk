@@ -33,7 +33,7 @@ class Paths {
         index++
       }
     } else {
-      callback(0, undefined, undefined)
+      callback()
     }
     return this
   }
@@ -58,7 +58,7 @@ class Paths {
         index++
       }
     } else {
-      fn(0, undefined, undefined)
+      callback()
     }
     return this
   }
