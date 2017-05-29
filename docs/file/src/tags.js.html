@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/tag.js | swagger-walk API Document</title>
+  <title data-ice="title">src/tags.js | swagger-walk API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -44,54 +44,51 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/tag.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * Swagger Tag
+<div class="content" data-ice="content"><h1 data-ice="title">src/tags.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const Tag = require(&apos;./tag&apos;)
+
+/**
+ * Swagger Tags
  */
-class Tag {
+class Tags {
   constructor (data) {
     /**
-     * Store the tag data
-     * @type {object}
+     * Store the tags data
+     * @type {array}
      */
-    this.data = data
+    this.data = data || []
   }
 
   /**
-   * Check if the tag has a name property.
-   * @returns {boolean}
+   * Return the total number of tags
+   * @return {number}
    */
-  hasName () {
-    if (this.data.name === undefined) {
-      return false
+  total () {
+    if (this.data !== undefined) {
+      return this.data.length
     }
-    return true
+    return 0
   }
 
   /**
-   * Check if the tag has a description property.
-   * @returns {boolean}
+   * Walk through all tags
+   * @param {function(index: number, tag: Tag)} callback - function to exectute for each tag element.
+   * @return {Tags}
    */
-  hasDescription () {
-    if (this.data.description === undefined) {
-      return false
+  walk (callback) {
+    if (this.data !== undefined) {
+      for (var i = 0; i &lt; this.data.length; i++) {
+        let tagData = new Tag(this.data[i])
+        callback(i, tagData)
+      }
+    } else {
+      callback(0, undefined)
     }
-    return true
-  }
-
-  /**
-   * Check if the tag has an externalDocs property.
-   * @returns {boolean}
-   */
-  hasExternalDocs () {
-    if (this.data.externalDocs === undefined) {
-      return false
-    }
-    return true
+    return this
   }
 }
 
-module.exports = Tag
+module.exports = Tags
 </code></pre>
 
 </div>

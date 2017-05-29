@@ -33,17 +33,20 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definitions.js~Definitions.html">Definitions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/paths.js~Paths.html">Paths</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/definition.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * Swagger definition utility to walk through the properties
+ * Swagger Definition
  */
 class Definition {
   constructor (data) {
@@ -53,7 +56,7 @@ class Definition {
   /**
    * Check if the definition is the given type
    * @param {string} type - the type of the definition (number, string, object etc.)
-   * @returns {boolean}
+   * @return {boolean}
    */
   isType (type) {
     if (this.data.type === type) {
@@ -63,14 +66,16 @@ class Definition {
   }
 
   /**
-   * return the number of properties
+   * Return the number of properties
+   * @return {number}
    */
   totalProperties () {
     return Object.keys(this.data.properties).length
   }
 
   /**
-   * walk through each property
+   * Walk through all properties
+   * @param {function} fn - function to exectute for each property element. taking three arguments:
    */
   walkProperties (fn) {
     if (this.data.properties !== undefined) {
@@ -82,6 +87,24 @@ class Definition {
         index++
       }
     }
+  }
+
+  /**
+   * Get a property by name
+   * @param {string} name - The name of the property element
+   * @return {object}
+   */
+  getProperty (name) {
+    if (this.data.properties !== undefined) {
+      for (var prop in this.data.properties) {
+        if (this.data.properties.hasOwnProperty(prop)) {
+          if (prop === name) {
+            return this.data.properties[prop]
+          }
+        }
+      }
+    }
+    return null
   }
 }
 

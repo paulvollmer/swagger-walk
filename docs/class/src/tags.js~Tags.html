@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">SwaggerWalk | swagger-walk API Document</title>
+  <title data-ice="title">Tags | swagger-walk API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -51,11 +51,11 @@
   
   
   
-  <span data-ice="source">| <span><a href="file/src/swagger-walk.js.html#lineNumber9">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/tags.js.html#lineNumber6">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">SwaggerWalk</h1>
+  <h1 data-ice="name">Tags</h1>
 
   
 
@@ -71,7 +71,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.</p>
+  <div class="description" data-ice="description"><p>Swagger Tags</p>
 </div>
   
 
@@ -104,41 +104,13 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html#instance-member-spec">spec</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+          <span data-ice="name"><span><a href="class/src/tags.js~Tags.html#instance-member-data">data</a></span></span><span data-ice="signature">: <span>array</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Store the swagger specification raw data</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          <span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html#instance-member-specSource">specSource</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Store the swagger source.</p>
+        <div data-ice="description"><p>Store the tags data</p>
 </div>
       </div>
     </td>
@@ -167,13 +139,13 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html#instance-method-loadSpec">loadSpec</a></span></span><span data-ice="signature">(source: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, cb: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+          <span data-ice="name"><span><a href="class/src/tags.js~Tags.html#instance-method-total">total</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Load a swagger specification from an URL or a filepath.</p>
+        <div data-ice="description"><p>Return the total number of tags</p>
 </div>
       </div>
     </td>
@@ -195,13 +167,13 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html#instance-method-setSpec">setSpec</a></span></span><span data-ice="signature">(spec: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>this</span></span>
+          <span data-ice="name"><span><a href="class/src/tags.js~Tags.html#instance-method-walk">walk</a></span></span><span data-ice="signature">(callback: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, tag: <span><a href="class/src/tag.js~Tag.html">Tag</a></span>)</span></span>): <span><a href="class/src/tags.js~Tags.html">Tags</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Set an object as the swagger specification we want to walk.</p>
+        <div data-ice="description"><p>Walk through all tags</p>
 </div>
       </div>
     </td>
@@ -222,69 +194,25 @@
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-spec">
+  <h3 data-ice="anchor" id="instance-member-data">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span data-ice="name">spec</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+    <span data-ice="name">data</span><span data-ice="signature">: <span>array</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/swagger-walk.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/tags.js.html#lineNumber12">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Store the swagger specification raw data</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-specSource">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span data-ice="name">specSource</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/swagger-walk.js.html#lineNumber20">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Store the swagger source. can be an url or filepath</p>
+  <div data-ice="description"><p>Store the tags data</p>
 </div>
 
   
@@ -313,58 +241,45 @@
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-loadSpec">
+  <h3 data-ice="anchor" id="instance-method-total">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span data-ice="name">loadSpec</span><span data-ice="signature">(source: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, cb: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+    <span data-ice="name">total</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/swagger-walk.js.html#lineNumber46">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/tags.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Load a swagger specification from an URL or a filepath.
-TODO: read local fils</p>
+  <div data-ice="description"><p>Return the total number of tags</p>
 </div>
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">source</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>URL or filepath to the swagger specification</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">cb</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The callback</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -382,25 +297,25 @@ TODO: read local fils</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-setSpec">
+  <h3 data-ice="anchor" id="instance-method-walk">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span data-ice="name">setSpec</span><span data-ice="signature">(spec: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>this</span></span>
+    <span data-ice="name">walk</span><span data-ice="signature">(callback: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, tag: <span><a href="class/src/tag.js~Tag.html">Tag</a></span>)</span></span>): <span><a href="class/src/tags.js~Tags.html">Tags</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/swagger-walk.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/tags.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Set an object as the swagger specification we want to walk.</p>
+  <div data-ice="description"><p>Walk through all tags</p>
 </div>
 
   
@@ -414,10 +329,10 @@ TODO: read local fils</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">spec</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="name" data-depth="0">callback</td>
+      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(index: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, tag: <span><a href="class/src/tag.js~Tag.html">Tag</a></span>)</span></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the swagger specification as an object</p>
+      <td data-ice="description"><p>function to exectute for each tag element.</p>
 </td>
     </tr>
 </tbody>
@@ -430,7 +345,7 @@ TODO: read local fils</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>this</span></td>
+          <td class="return-type" data-ice="returnType"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></td>
           
         </tr>
       </tbody>

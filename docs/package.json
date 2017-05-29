@@ -1,6 +1,6 @@
 {
   "name": "swagger-walk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "swagger utility to walk through paths, methods and definitions",
   "author": {
     "name": "Paul Vollmer",
@@ -20,8 +20,7 @@
   "scripts": {
     "pretest": "node_modules/.bin/standard --fix",
     "test": "node_modules/.bin/_mocha test/*.test.js",
-    "docs": "./node_modules/.bin/esdoc",
-    "clean": "rm -rf docs"
+    "docs": "rm -r docs && ./node_modules/.bin/esdoc"
   },
   "repository": {
     "type": "git",
@@ -32,6 +31,9 @@
       "node",
       "es6",
       "mocha"
+    ],
+    "ignore": [
+      "/docs"
     ]
   },
   "devDependencies": {

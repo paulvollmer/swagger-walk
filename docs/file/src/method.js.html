@@ -33,17 +33,20 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definitions.js~Definitions.html">Definitions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/paths.js~Paths.html">Paths</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/method.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * Swagger method utility
+ * Swagger Method
  */
 class Method {
   constructor (data) {
@@ -51,7 +54,8 @@ class Method {
   }
 
   /**
-   *
+   * Check if the method has a description
+   * @return {boolean}
    */
   hasDescription () {
     if (this.data.description === undefined) {
@@ -61,7 +65,8 @@ class Method {
   }
 
   /**
-   *
+   * Check if the method has a summaty
+   * @return {boolean}
    */
   hasSummary () {
     if (this.data.summary === undefined) {
@@ -71,7 +76,8 @@ class Method {
   }
 
   /**
-   *
+   * Check if the method has tags
+   * @return {boolean}
    */
   hasTags () {
     if (this.data.tags === undefined) {
@@ -81,19 +87,54 @@ class Method {
   }
 
   /**
-   *
+   * Walk through all parameters
+   * @param {function} fn - function to exectute for each parameter element. taking three arguments:
    */
-  walkParameters() {
-
+  walkParameters (fn) {
+    if (this.data.parameters !== undefined) {
+      let index = 0
+      for (var param in this.data.parameters) {
+        if (this.data.parameters.hasOwnProperty(param)) {
+          fn(index, param, this.data.parameters[param])
+        }
+        index++
+      }
+    }
   }
 
   /**
-   *
+   * Walk through all responses
+   * @param {function} fn - function to exectute for each response element. taking three arguments:
    */
-  walkResponses() {
-
+  walkResponses (fn) {
+    if (this.data.responses !== undefined) {
+      let index = 0
+      for (var res in this.data.responses) {
+        if (this.data.responses.hasOwnProperty(res)) {
+          fn(index, res, this.data.responses[res])
+        }
+        index++
+      }
+    }
   }
 
+  /**
+   * Get a response by name
+   * @param {string} name - The name of the response element
+   * @return {object}
+   */
+  getResponse (name) {
+    if (this.data.responses !== undefined) {
+      for (var res in this.data.responses) {
+        if (this.data.responses.hasOwnProperty(res)) {
+          if (res === name) {
+            return this.data.responses[res]
+          }
+        }
+      }
+    }
+    return null
+  }
 }
 
 module.exports = Method

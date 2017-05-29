@@ -33,20 +33,22 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definitions.js~Definitions.html">Definitions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/paths.js~Paths.html">Paths</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/swagger-walk.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const request = require(&apos;request&apos;)
-const Definition = require(&apos;./definition&apos;)
-const Method = require(&apos;./method&apos;)
-const Path = require(&apos;./path&apos;)
-const Tag = require(&apos;./tag&apos;)
+const Definitions = require(&apos;./definitions&apos;)
+const Paths = require(&apos;./paths&apos;)
+const Tags = require(&apos;./tags&apos;)
 
 /**
  * SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.
@@ -54,7 +56,7 @@ const Tag = require(&apos;./tag&apos;)
 class SwaggerWalk {
   constructor () {
     /**
-     * Store the swagger specification data
+     * Store the swagger specification raw data
      * @type {object}
      */
     this.spec = {}
@@ -63,6 +65,10 @@ class SwaggerWalk {
      * @type {string}
      */
     this.specSource = &apos;&apos;
+
+    this.tags = new Tags()
+    this.paths = new Paths()
+    this.definitions = new Definitions()
   }
 
   /**
@@ -72,6 +78,9 @@ class SwaggerWalk {
    */
   setSpec (spec) {
     this.spec = spec
+    this.tags = new Tags(spec.tags)
+    this.paths = new Paths(spec.paths)
+    this.definitions = new Definitions(spec.definitions)
     return this
   }
 
@@ -87,103 +96,17 @@ class SwaggerWalk {
       if (err) {
         cb(err)
       }
-      // console.log(&apos;statusCode:&apos;, res &amp;&amp; res.statusCode);
       if (res &amp;&amp; res.statusCode !== 200) {
         cb(new Error(&apos;response failed&apos;))
       }
       try {
-        self.spec = JSON.parse(res.body)
+        self.setSpec(JSON.parse(res.body))
       } catch (e) {
         cb(e)
       }
-
       self.specSource = source
       cb(null)
     })
-  }
-
-  // Tags
-
-  walkTags (fn) {
-    if (this.spec.tags !== undefined) {
-      for (var i = 0; i &lt; this.spec.tags.length; i++) {
-        let tagData = new Tag(this.spec.tags[i])
-        fn(i, tagData)
-      }
-    } else {
-      fn(0, undefined)
-    }
-    return this
-  }
-
-  totalTags () {
-    if (this.spec.tags !== undefined) {
-      return this.spec.tags.length
-    }
-    return 0
-  }
-
-  // Paths
-
-  walkPaths (fn) {
-    if (this.spec.paths !== undefined) {
-      let index = 0
-      for (var path in this.spec.paths) {
-        if (this.spec.paths.hasOwnProperty(path)) {
-          let pathData = new Path(this.spec.paths[path])
-          fn(index, path, pathData)
-        }
-        index++
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
-  }
-
-  totalPaths () {
-    return Object.keys(this.spec.paths).length
-  }
-
-  walkPathMethods (fn) {
-    if (this.spec.paths !== undefined) {
-      let index = 0
-      for (var path in this.spec.paths) {
-        if (this.spec.paths.hasOwnProperty(path)) {
-          for (var method in this.spec.paths[path]) {
-            if (this.spec.paths[path].hasOwnProperty(method)) {
-              let methodData = new Method(this.spec.paths[path][method])
-              fn(index, path, method, methodData)
-            }
-          }
-        }
-        index++
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
-  }
-
-  // Definitions
-
-  totalDefinitions () {
-    return Object.keys(this.spec.definitions).length
-  }
-
-  walkDefinitions (fn) {
-    if (this.spec.definitions) {
-      let index = 0
-      for (var def in this.spec.definitions) {
-        if (this.spec.definitions.hasOwnProperty(def)) {
-          let defData = new Definition(this.spec.definitions[def])
-          fn(index, def, defData)
-        }
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
   }
 }
 

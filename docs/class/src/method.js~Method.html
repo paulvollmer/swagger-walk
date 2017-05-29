@@ -33,10 +33,13 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definitions.js~Definitions.html">Definitions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/paths.js~Paths.html">Paths</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -68,7 +71,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>Swagger method utility</p>
+  <div class="description" data-ice="description"><p>Swagger Method</p>
 </div>
   
 
@@ -102,13 +105,42 @@
         <p>
           
           
+          <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-getResponse">getResponse</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Get a response by name</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
           <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-hasDescription">hasDescription</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Check if the method has a description</p>
+</div>
       </div>
     </td>
     <td>
@@ -135,7 +167,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Check if the method has a summaty</p>
+</div>
       </div>
     </td>
     <td>
@@ -162,7 +195,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Check if the method has tags</p>
+</div>
       </div>
     </td>
     <td>
@@ -183,13 +217,14 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-walkParameters">walkParameters</a></span></span><span data-ice="signature">()</span>
+          <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-walkParameters">walkParameters</a></span></span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Walk through all parameters</p>
+</div>
       </div>
     </td>
     <td>
@@ -210,13 +245,14 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-walkResponses">walkResponses</a></span></span><span data-ice="signature">()</span>
+          <span data-ice="name"><span><a href="class/src/method.js~Method.html#instance-method-walkResponses">walkResponses</a></span></span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Walk through all responses</p>
+</div>
       </div>
     </td>
     <td>
@@ -237,6 +273,79 @@
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getResponse">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">getResponse</span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber79">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Get a response by name</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">name</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The name of the response element</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-hasDescription">
     <span class="access" data-ice="access">public</span>
     
@@ -248,14 +357,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber13">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Check if the method has a description</p>
+</div>
 
   
 
@@ -303,14 +413,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber24">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Check if the method has a summaty</p>
+</div>
 
   
 
@@ -358,14 +469,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber35">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Check if the method has tags</p>
+</div>
 
   
 
@@ -409,22 +521,40 @@
     
     
     
-    <span data-ice="name">walkParameters</span><span data-ice="signature">()</span>
+    <span data-ice="name">walkParameters</span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Walk through all parameters</p>
+</div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">fn</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>function to exectute for each parameter element. taking three arguments:</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -452,22 +582,40 @@
     
     
     
-    <span data-ice="name">walkResponses</span><span data-ice="signature">()</span>
+    <span data-ice="name">walkResponses</span><span data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber49">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/method.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Walk through all responses</p>
+</div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">fn</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>function to exectute for each response element. taking three arguments:</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   

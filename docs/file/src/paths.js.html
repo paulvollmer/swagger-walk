@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/tag.js | swagger-walk API Document</title>
+  <title data-ice="title">src/paths.js | swagger-walk API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -44,54 +44,74 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/tag.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * Swagger Tag
+<div class="content" data-ice="content"><h1 data-ice="title">src/paths.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const Path = require(&apos;./path&apos;)
+const Method = require(&apos;./method&apos;)
+
+/**
+ * Swagger Paths
  */
-class Tag {
+class Paths {
   constructor (data) {
-    /**
-     * Store the tag data
-     * @type {object}
-     */
-    this.data = data
+    this.data = data || {}
   }
 
   /**
-   * Check if the tag has a name property.
-   * @returns {boolean}
+   * Return the total number of paths
+   * @return {number}
    */
-  hasName () {
-    if (this.data.name === undefined) {
-      return false
-    }
-    return true
+  total () {
+    return Object.keys(this.data).length
   }
 
   /**
-   * Check if the tag has a description property.
-   * @returns {boolean}
+   * Walk through all paths
+   * @param {function(index: number, name: string, path: Path)} callback - function to exectute for each path element.
+   * @return {Paths}
    */
-  hasDescription () {
-    if (this.data.description === undefined) {
-      return false
+  walk (callback) {
+    if (this.data !== undefined) {
+      let index = 0
+      for (var path in this.data) {
+        if (this.data.hasOwnProperty(path)) {
+          let pathData = new Path(this.data[path])
+          callback(index, path, pathData)
+        }
+        index++
+      }
+    } else {
+      callback(0, undefined, undefined)
     }
-    return true
+    return this
   }
 
   /**
-   * Check if the tag has an externalDocs property.
-   * @returns {boolean}
+   * Walk through all paths methods
+   * @param {function(index: number, name: string, methodName: string, method: Path)} callback - function to exectute for each paths method element.
+   * @return {Paths}
    */
-  hasExternalDocs () {
-    if (this.data.externalDocs === undefined) {
-      return false
+  walkMethods (callback) {
+    if (this.data !== undefined) {
+      let index = 0
+      for (var path in this.data) {
+        if (this.data.hasOwnProperty(path)) {
+          for (var method in this.data[path]) {
+            if (this.data[path].hasOwnProperty(method)) {
+              let methodData = new Method(this.data[path][method])
+              callback(index, path, method, methodData)
+            }
+          }
+        }
+        index++
+      }
+    } else {
+      fn(0, undefined, undefined)
     }
-    return true
+    return this
   }
 }
 
-module.exports = Tag
+module.exports = Paths
 </code></pre>
 
 </div>

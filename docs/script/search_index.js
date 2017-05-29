@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "swagger-walk/src/definitions.js~definitions",
+    "class/src/definitions.js~Definitions.html",
+    "<span>Definitions</span> <span class=\"search-result-import-path\">swagger-walk/src/definitions.js</span>",
+    "class"
+  ],
+  [
     "swagger-walk/src/method.js~method",
     "class/src/method.js~Method.html",
     "<span>Method</span> <span class=\"search-result-import-path\">swagger-walk/src/method.js</span>",
@@ -18,6 +24,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "swagger-walk/src/paths.js~paths",
+    "class/src/paths.js~Paths.html",
+    "<span>Paths</span> <span class=\"search-result-import-path\">swagger-walk/src/paths.js</span>",
+    "class"
+  ],
+  [
     "swagger-walk~swaggerwalk",
     "class/src/swagger-walk.js~SwaggerWalk.html",
     "<span>SwaggerWalk</span> <span class=\"search-result-import-path\">swagger-walk</span>",
@@ -27,6 +39,12 @@ window.esdocSearchIndex = [
     "swagger-walk/src/tag.js~tag",
     "class/src/tag.js~Tag.html",
     "<span>Tag</span> <span class=\"search-result-import-path\">swagger-walk/src/tag.js</span>",
+    "class"
+  ],
+  [
+    "swagger-walk/src/tags.js~tags",
+    "class/src/tags.js~Tags.html",
+    "<span>Tags</span> <span class=\"search-result-import-path\">swagger-walk/src/tags.js</span>",
     "class"
   ],
   [
@@ -366,6 +384,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/definition.js~definition#getproperty",
+    "class/src/definition.js~Definition.html#instance-method-getProperty",
+    "src/definition.js~Definition#getProperty",
+    "method"
+  ],
+  [
     "src/definition.js~definition#istype",
     "class/src/definition.js~Definition.html#instance-method-isType",
     "src/definition.js~Definition#isType",
@@ -384,10 +408,34 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/definitions.js",
+    "file/src/definitions.js.html",
+    "src/definitions.js",
+    "file"
+  ],
+  [
+    "src/definitions.js~definitions#total",
+    "class/src/definitions.js~Definitions.html#instance-method-total",
+    "src/definitions.js~Definitions#total",
+    "method"
+  ],
+  [
+    "src/definitions.js~definitions#walk",
+    "class/src/definitions.js~Definitions.html#instance-method-walk",
+    "src/definitions.js~Definitions#walk",
+    "method"
+  ],
+  [
     "src/method.js",
     "file/src/method.js.html",
     "src/method.js",
     "file"
+  ],
+  [
+    "src/method.js~method#getresponse",
+    "class/src/method.js~Method.html#instance-method-getResponse",
+    "src/method.js~Method#getResponse",
+    "method"
   ],
   [
     "src/method.js~method#hasdescription",
@@ -423,6 +471,54 @@ window.esdocSearchIndex = [
     "src/path.js",
     "file/src/path.js.html",
     "src/path.js",
+    "file"
+  ],
+  [
+    "src/path.js~path#getmethod",
+    "class/src/path.js~Path.html#instance-method-getMethod",
+    "src/path.js~Path#getMethod",
+    "method"
+  ],
+  [
+    "src/path.js~path#totalmethods",
+    "class/src/path.js~Path.html#instance-method-totalMethods",
+    "src/path.js~Path#totalMethods",
+    "method"
+  ],
+  [
+    "src/path.js~path#walkmethods",
+    "class/src/path.js~Path.html#instance-method-walkMethods",
+    "src/path.js~Path#walkMethods",
+    "method"
+  ],
+  [
+    "src/paths.js",
+    "file/src/paths.js.html",
+    "src/paths.js",
+    "file"
+  ],
+  [
+    "src/paths.js~paths#total",
+    "class/src/paths.js~Paths.html#instance-method-total",
+    "src/paths.js~Paths#total",
+    "method"
+  ],
+  [
+    "src/paths.js~paths#walk",
+    "class/src/paths.js~Paths.html#instance-method-walk",
+    "src/paths.js~Paths#walk",
+    "method"
+  ],
+  [
+    "src/paths.js~paths#walkmethods",
+    "class/src/paths.js~Paths.html#instance-method-walkMethods",
+    "src/paths.js~Paths#walkMethods",
+    "method"
+  ],
+  [
+    "src/property.js",
+    "file/src/property.js.html",
+    "src/property.js",
     "file"
   ],
   [
@@ -474,9 +570,39 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/tag.js~tag#hasexternaldocs",
+    "class/src/tag.js~Tag.html#instance-method-hasExternalDocs",
+    "src/tag.js~Tag#hasExternalDocs",
+    "method"
+  ],
+  [
     "src/tag.js~tag#hasname",
     "class/src/tag.js~Tag.html#instance-method-hasName",
     "src/tag.js~Tag#hasName",
+    "method"
+  ],
+  [
+    "src/tags.js",
+    "file/src/tags.js.html",
+    "src/tags.js",
+    "file"
+  ],
+  [
+    "src/tags.js~tags#data",
+    "class/src/tags.js~Tags.html#instance-member-data",
+    "src/tags.js~Tags#data",
+    "member"
+  ],
+  [
+    "src/tags.js~tags#total",
+    "class/src/tags.js~Tags.html#instance-method-total",
+    "src/tags.js~Tags#total",
+    "method"
+  ],
+  [
+    "src/tags.js~tags#walk",
+    "class/src/tags.js~Tags.html#instance-method-walk",
+    "src/tags.js~Tags#walk",
     "method"
   ]
 ]

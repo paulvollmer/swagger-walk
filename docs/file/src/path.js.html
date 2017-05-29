@@ -33,29 +33,70 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definition.js~Definition.html">Definition</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/definitions.js~Definitions.html">Definitions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/method.js~Method.html">Method</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/paths.js~Paths.html">Paths</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/swagger-walk.js~SwaggerWalk.html">SwaggerWalk</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tag.js~Tag.html">Tag</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/tags.js~Tags.html">Tags</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/path.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * Swagger path utility
+ * Swagger Path
  */
 class Path {
   constructor (data) {
     this.data = data
   }
 
-  hasPath(name) {
+  // hasMethod (name) {
+  //
+  // }
 
+  /**
+   * Return the number of methods
+   * @return {number}
+   */
+  totalMethods () {
+    return Object.keys(this.data).length
   }
 
-  walkMethods() {
+  /**
+   * Walk through all methods
+   * @param {function} fn - function to exectute for each method element. taking three arguments:
+   */
+  walkMethods (fn) {
+    if (this.data !== undefined) {
+      let index = 0
+      for (var method in this.data) {
+        if (this.data.hasOwnProperty(method)) {
+          fn(index, method, this.data[method])
+        }
+        index++
+      }
+    }
+  }
 
+  /**
+   * Get a method by name
+   * @param {string} name - The name of the method element
+   * @return {object}
+   */
+  getMethod (name) {
+    if (this.data !== undefined) {
+      for (var method in this.data) {
+        if (this.data.hasOwnProperty(method)) {
+          if (method === name) {
+            return this.data[method]
+          }
+        }
+      }
+    }
+    return null
   }
 }
 
