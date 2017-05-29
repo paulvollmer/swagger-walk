@@ -19,29 +19,31 @@ class Paths {
 
   /**
    * Walk through all paths
-   * @param {function} fn - function to exectute for each path element.
+   * @param {function(index: number, name: string, path: Path)} callback - function to exectute for each path element.
+   * @return {Paths}
    */
-  walk (fn) {
+  walk (callback) {
     if (this.data !== undefined) {
       let index = 0
       for (var path in this.data) {
         if (this.data.hasOwnProperty(path)) {
           let pathData = new Path(this.data[path])
-          fn(index, path, pathData)
+          callback(index, path, pathData)
         }
         index++
       }
     } else {
-      fn(0, undefined, undefined)
+      callback(0, undefined, undefined)
     }
     return this
   }
 
   /**
    * Walk through all paths methods
-   * @param {function} fn - function to exectute for each paths method element.
+   * @param {function(index: number, name: string, methodName: string, method: Path)} callback - function to exectute for each paths method element.
+   * @return {Paths}
    */
-  walkMethods (fn) {
+  walkMethods (callback) {
     if (this.data !== undefined) {
       let index = 0
       for (var path in this.data) {
@@ -49,7 +51,7 @@ class Paths {
           for (var method in this.data[path]) {
             if (this.data[path].hasOwnProperty(method)) {
               let methodData = new Method(this.data[path][method])
-              fn(index, path, method, methodData)
+              callback(index, path, method, methodData)
             }
           }
         }

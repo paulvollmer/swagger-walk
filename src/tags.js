@@ -25,16 +25,17 @@ class Tags {
 
   /**
    * Walk through all tags
-   * @param {function} fn - function to exectute for each tag element.
+   * @param {function(index: number, tag: Tag)} callback - function to exectute for each tag element.
+   * @return {Tags}
    */
-  walk (fn) {
+  walk (callback) {
     if (this.data !== undefined) {
       for (var i = 0; i < this.data.length; i++) {
         let tagData = new Tag(this.data[i])
-        fn(i, tagData)
+        callback(i, tagData)
       }
     } else {
-      fn(0, undefined)
+      callback(0, undefined)
     }
     return this
   }

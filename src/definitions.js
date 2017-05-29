@@ -18,19 +18,20 @@ class Definitions {
 
   /**
    * Walk through all definitions
-   * @param {function} fn - function to exectute for each definition element.
+   * @param {function(index: number, name: string, definition: Definition)} callback - function to exectute for each definition element.
+   * @return {Definitions}
    */
-  walk (fn) {
+  walk (callback) {
     if (this.data) {
       let index = 0
       for (var def in this.data) {
         if (this.data.hasOwnProperty(def)) {
           let defData = new Definition(this.data[def])
-          fn(index, def, defData)
+          callback(index, def, defData)
         }
       }
     } else {
-      fn(0, undefined, undefined)
+      callback(0, undefined, undefined)
     }
     return this
   }

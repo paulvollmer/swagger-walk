@@ -14,7 +14,7 @@ let walker = new SwaggerWalk()
 walker.setSpec(spec)
 
 // walk all path methods
-walker.walkPathMethods((index, path, method, data) => {
+walker.paths.walkMethods((index, path, method, data) => {
   console.log(path, method)
 })
 ```
