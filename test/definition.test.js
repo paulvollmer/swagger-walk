@@ -3,16 +3,30 @@ const Definition = require('../src/definition')
 const spec = require('./fixtures/swagger.json')
 
 describe('Definition', () => {
-  it('new', () => {
-    let newDef = new Definition(spec.definitions['Order'])
+  let newDef = new Definition(spec.definitions['Order'])
 
+  it('isType', () => {
+    expect(newDef.isType('object')).toBeA('boolean')
     expect(newDef.isType('object')).toBe(true)
-    expect(newDef.totalProperties()).toBe(6)
+  })
 
+  it('totalProperties', () => {
+    expect(newDef.totalProperties()).toBeA('number')
+    expect(newDef.totalProperties()).toBe(6)
+  })
+
+  it('walkProperty', () => {
+    newDef.walkProperties((index, name, data) => {
+      expect(index).toBeA('number')
+      expect(name).toBeA('string')
+      expect(data).toBeA('object')
+    })
+  })
+
+  it('getProperty', () => {
     let tmp = newDef.getProperty('id')
-    expect(tmp.index).toBe(0)
-    expect(tmp.prop).toBe('id')
-    expect(tmp.data.type).toBe('integer')
-    expect(tmp.data.format).toBe('int64')
+    expect(tmp).toBeA('object')
+    expect(tmp.type).toBe('integer')
+    expect(tmp.format).toBe('int64')
   })
 })

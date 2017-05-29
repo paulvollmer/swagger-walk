@@ -1,5 +1,5 @@
 /**
- * Swagger tag utility
+ * Swagger Tag
  */
 class Tag {
   constructor (data) {
@@ -27,6 +27,17 @@ class Tag {
    */
   hasDescription () {
     if (this.data.description === undefined) {
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Check if the tag has an externalDocs property.
+   * @returns {boolean}
+   */
+  hasExternalDocs () {
+    if (this.data.externalDocs === undefined) {
       return false
     }
     return true

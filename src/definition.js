@@ -1,5 +1,5 @@
 /**
- * Swagger definition utility to walk through the properties
+ * Swagger Definition
  */
 class Definition {
   constructor (data) {
@@ -45,25 +45,19 @@ class Definition {
   /**
    * Get a property by name
    * @param {string} name - The name of the property element
-   * @return {{index: number, prop: string, data: object}}
+   * @return {object}
    */
   getProperty (name) {
-    let tmpData = {index: null, prop: null, data: null}
     if (this.data.properties !== undefined) {
-      let index = 0
       for (var prop in this.data.properties) {
         if (this.data.properties.hasOwnProperty(prop)) {
           if (prop === name) {
-            tmpData.index = index
-            tmpData.prop = prop
-            tmpData.data = this.data.properties[prop]
-            return tmpData
+            return this.data.properties[prop]
           }
         }
-        index++
       }
     }
-    return tmpData
+    return null
   }
 }
 

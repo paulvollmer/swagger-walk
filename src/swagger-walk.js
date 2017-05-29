@@ -1,8 +1,7 @@
 const request = require('request')
-const Definition = require('./definition')
-const Method = require('./method')
-const Path = require('./path')
-const Tag = require('./tag')
+const Definitions = require('./definitions')
+const Paths = require('./paths')
+const Tags = require('./tags')
 
 /**
  * SwaggerWalk utility to walk through paths, methods and definitions of a swagger specification.
@@ -10,7 +9,7 @@ const Tag = require('./tag')
 class SwaggerWalk {
   constructor () {
     /**
-     * Store the swagger specification data
+     * Store the swagger specification raw data
      * @type {object}
      */
     this.spec = {}
@@ -19,6 +18,10 @@ class SwaggerWalk {
      * @type {string}
      */
     this.specSource = ''
+
+    this.tags = new Tags()
+    this.paths = new Paths()
+    this.definitions = new Definitions()
   }
 
   /**
@@ -28,6 +31,9 @@ class SwaggerWalk {
    */
   setSpec (spec) {
     this.spec = spec
+    this.tags = new Tags(spec.tags)
+    this.paths = new Paths(spec.paths)
+    this.definitions = new Definitions(spec.definitions)
     return this
   }
 
@@ -43,103 +49,17 @@ class SwaggerWalk {
       if (err) {
         cb(err)
       }
-      // console.log('statusCode:', res && res.statusCode);
       if (res && res.statusCode !== 200) {
         cb(new Error('response failed'))
       }
       try {
-        self.spec = JSON.parse(res.body)
+        self.setSpec(JSON.parse(res.body))
       } catch (e) {
         cb(e)
       }
-
       self.specSource = source
       cb(null)
     })
-  }
-
-  // Tags
-
-  walkTags (fn) {
-    if (this.spec.tags !== undefined) {
-      for (var i = 0; i < this.spec.tags.length; i++) {
-        let tagData = new Tag(this.spec.tags[i])
-        fn(i, tagData)
-      }
-    } else {
-      fn(0, undefined)
-    }
-    return this
-  }
-
-  totalTags () {
-    if (this.spec.tags !== undefined) {
-      return this.spec.tags.length
-    }
-    return 0
-  }
-
-  // Paths
-
-  walkPaths (fn) {
-    if (this.spec.paths !== undefined) {
-      let index = 0
-      for (var path in this.spec.paths) {
-        if (this.spec.paths.hasOwnProperty(path)) {
-          let pathData = new Path(this.spec.paths[path])
-          fn(index, path, pathData)
-        }
-        index++
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
-  }
-
-  totalPaths () {
-    return Object.keys(this.spec.paths).length
-  }
-
-  walkPathMethods (fn) {
-    if (this.spec.paths !== undefined) {
-      let index = 0
-      for (var path in this.spec.paths) {
-        if (this.spec.paths.hasOwnProperty(path)) {
-          for (var method in this.spec.paths[path]) {
-            if (this.spec.paths[path].hasOwnProperty(method)) {
-              let methodData = new Method(this.spec.paths[path][method])
-              fn(index, path, method, methodData)
-            }
-          }
-        }
-        index++
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
-  }
-
-  // Definitions
-
-  totalDefinitions () {
-    return Object.keys(this.spec.definitions).length
-  }
-
-  walkDefinitions (fn) {
-    if (this.spec.definitions) {
-      let index = 0
-      for (var def in this.spec.definitions) {
-        if (this.spec.definitions.hasOwnProperty(def)) {
-          let defData = new Definition(this.spec.definitions[def])
-          fn(index, def, defData)
-        }
-      }
-    } else {
-      fn(0, undefined, undefined)
-    }
-    return this
   }
 }
 

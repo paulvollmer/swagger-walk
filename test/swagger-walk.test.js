@@ -9,7 +9,9 @@ describe('SwaggerWalk', () => {
       let source = 'http://petstore.swagger.io/v2/swagger.json'
       walker.loadSpec(source, (err) => {
         expect(err).toBe(null)
+        expect(walker.specSource).toBeA('string')
         expect(walker.specSource).toBe(source)
+        expect(walker.spec.swagger).toBeA('string')
         expect(walker.spec.swagger).toBe('2.0')
         done()
       })
@@ -19,7 +21,9 @@ describe('SwaggerWalk', () => {
       let source = './fixtures/swagger.json'
       walker.loadSpec(source, (err) => {
         expect(err).toBe(null)
+        expect(walker.specSource).toBeA('string')
         expect(walker.specSource).toBe(source)
+        expect(walker.spec.swagger).toBeA('string')
         expect(walker.spec.swagger).toBe('2.0')
         done()
       })
@@ -30,6 +34,7 @@ describe('SwaggerWalk', () => {
     it('set a swagger object to the walker', () => {
       let walker = new SwaggerWalk()
       walker.setSpec(spec)
+      expect(walker.spec.swagger).toBeA('string')
       expect(walker.spec.swagger).toBe('2.0')
     })
   })
@@ -37,15 +42,15 @@ describe('SwaggerWalk', () => {
   let walker = new SwaggerWalk()
   walker.setSpec(spec)
 
-  describe('Tags', () => {
-    it('totalTags', () => {
-      let totalTags = walker.totalTags()
+  describe('tags', () => {
+    it('total', () => {
+      let totalTags = walker.tags.total()
       expect(totalTags).toBeA('number')
       expect(totalTags).toBe(3)
     })
 
-    it('walkTags', () => {
-      walker.walkTags((index, tag) => {
+    it('walk', () => {
+      walker.tags.walk((index, tag) => {
         expect(index).toBeA('number')
         expect(tag).toBeAn('object')
         expect(tag.hasName()).toBe(true)
@@ -54,15 +59,15 @@ describe('SwaggerWalk', () => {
     })
   })
 
-  describe('Paths', () => {
-    it('totalPaths', () => {
-      let totalPaths = walker.totalPaths()
+  describe('paths', () => {
+    it('total', () => {
+      let totalPaths = walker.paths.total()
       expect(totalPaths).toBeA('number')
       expect(totalPaths).toBe(14)
     })
 
-    it('walkPaths', () => {
-      walker.walkPaths((index, path, methods) => {
+    it('walk', () => {
+      walker.paths.walk((index, path, methods) => {
         // console.log(index, path)
         expect(index).toBeA('number')
         expect(path).toBeA('string')
@@ -71,8 +76,8 @@ describe('SwaggerWalk', () => {
       })
     })
 
-    it('walkPathMethods', () => {
-      walker.walkPathMethods((index, path, method, data) => {
+    it('walkMethods', () => {
+      walker.paths.walkMethods((index, path, method, data) => {
         // console.log(index, path, method)
         expect(index).toBeA('number')
         expect(path).toBeA('string')
@@ -88,27 +93,30 @@ describe('SwaggerWalk', () => {
     })
   })
 
-  describe.only('Definitions', () => {
-    it('totalDefinitions', () => {
-      let totalDefinitions = walker.totalDefinitions()
+  describe('definitions', () => {
+    it('total', () => {
+      let totalDefinitions = walker.definitions.total()
       expect(totalDefinitions).toBeA('number')
       expect(totalDefinitions).toBe(6)
     })
 
-    it('walkDefinitions', () => {
-      walker.walkDefinitions((index, definition, data) => {
+    it('walk', () => {
+      walker.definitions.walk((index, name, definition) => {
         // console.log(index, definition)
         expect(index).toBeA('number')
-        expect(definition).toBeA('string')
-        expect(data).toBeAn('object')
+        expect(name).toBeA('string')
+        expect(definition).toBeAn('object')
 
-        expect(data.isType('object')).toBeA('boolean')
-        expect(data.isType('object')).toBe(true)
+        expect(definition.isType('object')).toBeA('boolean')
+        expect(definition.isType('object')).toBe(true)
 
-        expect(data.totalProperties()).toNotBe(0)
-        data.walkProperties((index, name, data) => {
-          // console.log(index, name)
-        })
+        expect(definition.totalProperties()).toNotBe(0)
+        // data.walkProperties((index, name, data) => {
+        //   // console.log(index, name)
+        // })
+
+        // let tmpProp = data.getProperties('pet')
+        // console.log(tmpProp.index, tmpProp.name, tmpProp.data)
       })
     })
   })

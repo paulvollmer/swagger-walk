@@ -14,4 +14,9 @@ describe('Tag', () => {
     expect(newTag.hasDescription()).toBeA('boolean')
     expect(newTag.hasDescription()).toBe(true)
   })
+
+  it('hasExternalDocs', () => {
+    expect(newTag.hasExternalDocs()).toBeA('boolean')
+    expect(newTag.hasExternalDocs()).toBe(true)
+  })
 })

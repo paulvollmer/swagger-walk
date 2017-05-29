@@ -1,5 +1,5 @@
 /**
- * Swagger method utility
+ * Swagger Method
  */
 class Method {
   constructor (data) {
@@ -69,6 +69,24 @@ class Method {
         index++
       }
     }
+  }
+
+  /**
+   * Get a response by name
+   * @param {string} name - The name of the response element
+   * @return {object}
+   */
+  getResponse (name) {
+    if (this.data.responses !== undefined) {
+      for (var res in this.data.responses) {
+        if (this.data.responses.hasOwnProperty(res)) {
+          if (res === name) {
+            return this.data.responses[res]
+          }
+        }
+      }
+    }
+    return null
   }
 }
 
