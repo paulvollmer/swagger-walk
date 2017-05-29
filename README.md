@@ -1,4 +1,4 @@
-# swagger-walk
+# swagger-walk [![Build Status](https://travis-ci.org/paulvollmer/swagger-walk.svg?branch=master)](https://travis-ci.org/paulvollmer/swagger-walk)
 swagger utility to walk through paths, methods and definitions.
 
 ## Usage
